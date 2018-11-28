@@ -12,7 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
     isFesRuning=false;
     DATA_REST.setRawData((char*)cDATA_REST,15);
     DATA_CURE.setRawData((char*)cDATA_CURE,15);
-
+    sound1 = new QSound(":/new/prefix1/cure.wav");//加载声音文件
+    sound2 = new QSound(":/new/prefix1/rest.wav");//加载声音文件
    // DATA_REST.fromRawData(cDATA_REST,sizeof(cDATA_REST));
    // DATA_CURE.fromRawData(cDATA_CURE,sizeof(cDATA_CURE));
     //serialPort = 0;
@@ -72,9 +73,11 @@ void MainWindow::ReadData()
     srequestData=requestData.toHex(' ');
     if(srequestData=="5a 0b 00 a5"){
         isFesRuning=true;
+        sound1->play();
     }
     else if(srequestData=="5a 0c 00 a5"){
         isFesRuning=false;
+        sound2->play();
     }
     ui->textEdit_in->append(srequestData);
 }

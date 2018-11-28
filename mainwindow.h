@@ -5,7 +5,7 @@
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 #include <QTimer>
-
+#include <QSound>
 namespace Ui {
 class MainWindow;
 }
@@ -42,6 +42,8 @@ private:
     volatile bool isFesRuning;
     void StringToHex(QString str, QByteArray & senddata);
     char ConvertHexChar(char ch);
+    QSound *sound1;
+    QSound *sound2;
 };
 
 #endif // MAINWINDOW_H
